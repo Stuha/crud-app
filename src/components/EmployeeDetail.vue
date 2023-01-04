@@ -31,7 +31,6 @@ export default {
     axios.get(uri).then((response) => {
       this.employee = response.data.data;
     });
-
   },
 }
 </script>

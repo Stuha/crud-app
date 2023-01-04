@@ -30,21 +30,6 @@
               name: 'CreateEmployee'}" >
             <button type="button" class="btn btn-primary">Create Employee</button>
           </router-link>
-          <!-- <nav v-if="pagination && booksList.length > 0">
-              <ul class="pagination">
-                  <li class="page-item" :class="{'disabled' : currentPage === 1}">
-                      <a class="page-link" href="#" @click.prevent="changePage(currentPage - 1)">Previous</a>
-                  </li>
-                  <li v-for="page in pagesNumber" class="page-item"
-                      :class="{'active': page === pagination.meta.current_page}">
-                      <a href="javascript:void(0)" @click.prevent="changePage(page)" class="page-link">{{ page }}</a>
-                  </li>
-                  <li class="page-item" :class="{'disabled': currentPage === pagination.meta.last_page }">
-                      <a class="page-link" href="#" @click.prevent="changePage(currentPage + 1)">Next</a>
-                  </li>
-                  <span style="margin-top: 8px;"> &nbsp; <i>Displaying {{ pagination.data.length }} of {{ pagination.meta.total }} entries.</i></span>
-              </ul>
-          </nav> -->
       </div>
   </div>
 </template>
@@ -53,9 +38,6 @@
   import axios from "axios";
 
   export default {
-      props: {
-        //   columns: { type: Array, required: true },
-      },
       data: function () {
           return {
             baseUrl: 'api/v1/employees',
@@ -68,44 +50,12 @@
       mounted() {
           this.getData();
       },
-      computed: {
-          /**
-           * Get the pages number array for displaying in the pagination.
-           * */
-        //   pagesNumber() {
-        //       if (!this.pagination.meta.to) {
-        //           return []
-        //       }
-        //       let from = this.pagination.meta.current_page - this.offset
-        //       if (from < 1) {
-        //           from = 1
-        //       }
-        //       let to = from + (this.offset * 2)
-        //       if (to >= this.pagination.meta.last_page) {
-        //           to = this.pagination.meta.last_page
-        //       }
-        //       let pagesArray = []
-        //       for (let page = from; page <= to; page++) {
-        //           pagesArray.push(page)
-        //       }
-        //       return pagesArray
-        //   },
-          /**
-           * Get the total data displayed in the current page.
-           * */
-        //   totalData() {
-        //       return (this.pagination.meta.to - this.pagination.meta.from) + 1
-        //   },
-      },
       methods: {
           getData: function () {
               let url = 'api/v1/employees';
-            //   let dataUrl = `${url}?page=${this.currentPage}&column=${this.sortedColumn}&order=${this.order}&per_page=${this.perPage}`
-
               axios.get(url)
                   .then((response) => {
                     this.employees = response.data.data;
-                    console.log(this.employees)
                   })
                   .catch(function (error) {
                       console.log(error);
