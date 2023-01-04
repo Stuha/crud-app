@@ -60,19 +60,7 @@
                   .catch(function (error) {
                       console.log(error);
                   });
-          },
-          serialNumber: function(key) {
-              return key + 1;
-          },
-          changePage(pageNumber) {
-              this.currentPage = pageNumber
-              this.loadBooks()
           }
-      },
-      filters: {
-          columnHead: function (value) {
-              return value.split('_').join(' ').toUpperCase()
-          }
-      },
+      }
   }
 </script>
