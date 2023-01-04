@@ -7,8 +7,6 @@
                       <tr>
                           <th class="text-center">#</th>
                           <th>Name</th>
-                          <th>Age</th>
-                          <th>Salary</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -18,19 +16,20 @@
                       <tr v-for="employee in employees" :key="employee.id" class="text-center" v-else>
                           <td>{{ employee.id }}</td>
                           <td>{{ employee.employee_name }}</td>
-                          <td>{{ employee.employee_age }}</td>
-                          <td>{{ employee.employee_salary }}</td>
                           <router-link :to="{
-                                    path: '/employee',
-                                    params: employee, 
-                                    query: { employee: employee.id },
+                                    name: 'EmployeeDetail', params: {id: employee.id},
                                 }" >
-                                <button type="action" class="btn btn-primary">View Details</button>
+                                <button type="button" class="btn btn-primary">View Details</button>
                           </router-link>
                       </tr>
                   </tbody>
               </table>
           </div>
+
+          <router-link :to="{
+              name: 'CreateEmployee'}" >
+            <button type="button" class="btn btn-primary">Create Employee</button>
+          </router-link>
           <!-- <nav v-if="pagination && booksList.length > 0">
               <ul class="pagination">
                   <li class="page-item" :class="{'disabled' : currentPage === 1}">
