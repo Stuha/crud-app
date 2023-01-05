@@ -40,10 +40,6 @@
   export default {
       data: function () {
           return {
-            baseUrl: 'api/v1/employees',
-            page: 1,
-            perPage: 4,
-            totalPages: 0,
             employees: []
           }
       },
